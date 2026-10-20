@@ -1,0 +1,56 @@
+{
+  "name": "mister-khan-whatsapp-suite",
+  "version": "4.0.0",
+  "description": "MISTER KHAN — WhatsApp Remote Backup Suite with 24/7 uptime protection",
+  "main": "Fetch.js",
+  "author": "MISTER KHAN",
+  "license": "MIT",
+  "private": true,
+
+  "scripts": {
+    "start": "node Fetch.js",
+    "dev": "node --watch Fetch.js",
+    "prod": "pm2 start ecosystem.config.js --env production",
+    "stop": "pm2 stop mister-khan-suite",
+    "restart": "pm2 restart mister-khan-suite",
+    "reload": "pm2 reload mister-khan-suite",
+    "delete": "pm2 delete mister-khan-suite",
+    "logs": "pm2 logs mister-khan-suite --lines 100",
+    "logs-err": "pm2 logs mister-khan-suite --err --lines 100",
+    "monit": "pm2 monit",
+    "status": "pm2 status",
+    "flush": "pm2 flush",
+    "save": "pm2 save",
+    "startup": "pm2 startup",
+    "health": "curl -s http://localhost:30118/health",
+    "install-pm2": "npm install -g pm2 pm2-logrotate",
+    "keepalive": "node keepalive.js",
+    "postinstall": "node -e \"const fs=require('fs');['data','temp','tasks','logs','uploads','sessions_backup','public','tasks/temp_uploads'].forEach(d=>{if(!fs.existsSync(d))fs.mkdirSync(d,{recursive:true})})\""
+  },
+
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.18",
+    "chalk": "^4.1.2",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.21.2",
+    "multer": "^1.4.5-lts.1",
+    "pino": "^9.5.0"
+  },
+
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  },
+
+  "keywords": [
+    "whatsapp",
+    "baileys",
+    "remote-backup",
+    "automation",
+    "mister-khan"
+  ]
+}
